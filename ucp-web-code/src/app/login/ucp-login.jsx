@@ -14,20 +14,20 @@ export default function LogIn() {
   };
 
   return (
-    <div className="flex h-screen">
-      <div className="w-1/2 flex items-center justify-center bg-white p-8">
-        <div className="w-full max-w-md space-y-8">
-          <div className="flex justify-center">
+    <div className="login-container">
+      <div className="login-form-container">
+        <div className="login-form">
+          <div className="logo-container">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LogIn%20(3)-jNpreiI1hOFh8Ep9rHkQnGFOmL0c7z.png"
+              src="assets/LogoWeb.jpg"
               alt="UCP Logo"
-              className="h-20 w-auto"
+              className="logo"
             />
           </div>
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-            <div className="space-y-4">
+            <div className="form-group">
               <div>
-                <label htmlFor="student-code" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="student-code" className="form-label">
                   Código Estudiantil
                 </label>
                 <Input
@@ -50,7 +50,7 @@ export default function LogIn() {
                   name="password"
                   type="password"
                   required
-                  className="mt-1"
+                  className="form-input"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -61,13 +61,13 @@ export default function LogIn() {
                 Olvidé mi contraseña
               </a>
             </div>
-            <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button type="submit" className="submit-button">
               Ingresar
             </Button>
           </form>
         </div>
       </div>
-      <div className="w-1/2 bg-cover bg-center" style={{backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/LogIn%20(3)-jNpreiI1hOFh8Ep9rHkQnGFOmL0c7z.png')`}}>
+      <div className="image-container" style={{backgroundImage: `url('assets/background.jpg')`}}>
       </div>
     </div>
   );
