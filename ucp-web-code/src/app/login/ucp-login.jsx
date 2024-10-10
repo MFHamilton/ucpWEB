@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import Input from '../../components/ui/Button/input.jsx';
+import Button from '../../components/ui/Button/button.jsx';
+import Logo from '../../assets/LogoWeb.jpg';
+import './login.module.css';
 
 export default function LogIn() {
   const [studentCode, setStudentCode] = useState('');
@@ -14,17 +16,17 @@ export default function LogIn() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form-container">
-        <div className="login-form">
+    <div className= "login-container">
+      <div className= "login-form-container">
+        <div cl assName="login-form">
           <div className="logo-container">
             <img
-              src="assets/LogoWeb.jpg"
-              alt="UCP Logo"
+              src={Logo}
+              alt="UCP Logo" 
               className="logo"
             />
           </div>
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <div>
                 <label htmlFor="student-code" className="form-label">
@@ -35,7 +37,7 @@ export default function LogIn() {
                   name="student-code"
                   type="text"
                   required
-                  className="mt-1"
+                  className="form-input"
                   placeholder="Ej. 123456"
                   value={studentCode}
                   onChange={(e) => setStudentCode(e.target.value)}
@@ -71,4 +73,5 @@ export default function LogIn() {
       </div>
     </div>
   );
-}
+};
+
