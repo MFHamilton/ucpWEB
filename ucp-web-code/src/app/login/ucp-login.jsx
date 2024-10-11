@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Input from '../../components/ui/Button/input.jsx';
 import Button from '../../components/ui/Button/button.jsx';
-import Logo from '../../assets/LogoWeb.jpg';
-import './login.module.css';
+import Logo from '../../assets/LogoWeb.jpg';;
+import './login.css';
 
 export default function LogIn() {
   const [studentCode, setStudentCode] = useState('');
@@ -16,7 +16,7 @@ export default function LogIn() {
   };
 
   return (
-    <div className= "login-container">
+    <div className= "login-container"> 
       <div className= "login-form-container">
         <div cl assName="login-form">
           <div className="logo-container">
@@ -44,7 +44,7 @@ export default function LogIn() {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="password" className="form-label">
                   Contraseña
                 </label>
                 <Input
@@ -53,13 +53,14 @@ export default function LogIn() {
                   type="password"
                   required
                   className="form-input"
+                  placeholder="Contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
             <div className="text-sm">
-              <a href="#" className="font-medium text-purple-600 hover:text-purple-500">
+              <a href="#" className="forgot-password">
                 Olvidé mi contraseña
               </a>
             </div>
@@ -69,7 +70,7 @@ export default function LogIn() {
           </form>
         </div>
       </div>
-      <div className="image-container" style={{backgroundImage: `url('assets/background.jpg')`}}>
+      <div className="image-container">
       </div>
     </div>
   );

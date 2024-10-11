@@ -1,59 +1,79 @@
 .login-container {
-    display: flex;
-    height: 100vh;
+    background-color: white;
+    width: 700px;
+    height: 1080px;
+    justify-content: left;
+    position: absolute;
+    top: 0px;
+    left: 0px;
   }
   
   .login-form-container {
-    width: 50%;
+    width: 80%;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
-    background-color: white;
-    padding: 2rem;
+    padding-left: 5rem;
   }
   
   .login-form {
     width: 100%;
     max-width: 400px;
   }
+
+  body{
+    background-image: url(../../assets/background01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Poppins, sans-serif;
+
+  }
+
   
   .logo-container {
-    display: flex;
     justify-content: center;
+    margin-top: 4rem;
     margin-bottom: 2rem;
+    width: 30rem;
+
   }
   
   .logo {
-    height: 5rem;
-    width: auto;
+    max-width: 100%;
+    margin-bottom: 1px;
+
   }
   
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    
   }
   
   .form-label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    color: #4a5568;
+    color: #3C096C;
+    text-align: left;
   }
   
   .form-input {
-    width: 100%;
+    size: 100%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 4rem;
     line-height: 1.5;
-    border: 1px solid #e2e8f0;
+    border: none;
     border-radius: 0.25rem;
+    box-shadow: 0.5rem 0.3rem gray;
+    
   }
   
   .forgot-password {
     display: block;
-    text-align: right;
-    font-size: 0.875rem;
-    color: #805ad5;
+    text-align: left;
+    font-size: 1rem;
+    color: #3C096C;
     text-decoration: none;
     margin-bottom: 1rem;
   }
@@ -68,10 +88,11 @@
     font-size: 1rem;
     font-weight: 500;
     color: white;
-    background-color: #805ad5;
+    background-color: #3C096C;
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
+
   }
   
   .submit-button:hover {
