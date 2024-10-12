@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../components/ui/Button/input.jsx';
 import Button from '../../components/ui/Button/button.jsx';
-import Logo from '../../assets/LogoWeb.jpg';;
+import Logo from '../../assets/LogoWeb.jpg';
 import './login.css';
 
 export default function LogIn() {
   const [studentCode, setStudentCode] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Código Estudiantil:', studentCode);
-    console.log('Contraseña:', password);
-    // Aquí iría la lógica para enviar los datos al servidor
+    // Aquí simplemente navegamos al dashboard sin verificar credenciales
+    navigate('/dashboard');
   };
 
   return (
-    <div className= "login-container"> 
-      <div className= "login-form-container">
-        <div cl assName="login-form">
+    <div className="login-container"> 
+      <div className="login-form-container">
+        <div className="login-form">
           <div className="logo-container">
             <img
               src={Logo}
@@ -74,5 +75,4 @@ export default function LogIn() {
       </div>
     </div>
   );
-};
-
+}
