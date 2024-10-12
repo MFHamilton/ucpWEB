@@ -1,16 +1,17 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LogIn from './app/login/ucp-login.jsx'
 import Dashboard from './app/dashboard/ucp-dashboard.jsx'
 import './App.css'
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
   return (
-    <div className="app-container">
-      {isLoggedIn ? <Dashboard /> : <LogIn onLogin={() => setIsLoggedIn(true)} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LogIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   )
 }
 
