@@ -70,6 +70,7 @@ export default function LogIn() {
             Ingresar
           </Button>
         </form>
+        <div style={{ backgroundImage: `url(${background})` }}></div>
       </div>
     </div>
   </div>
