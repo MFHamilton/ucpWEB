@@ -1,16 +1,23 @@
 .menu-container {
-    background-color: #4a0e78;
+    background-color: #5f1995;
     color: white;
     padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    margin: 20px;
+    margin-top: 0.6rem;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1000;
+    width: 250px;
   }
-  
-  .menu-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: bold;
+
+  .menu-container-reports {
+    background-color: #5f1995;
+    color: white;
+    padding: 20px;
+    margin-top: 0.6rem;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1000;
+    width: 350px;
   }
   
   .menu-list {
@@ -21,9 +28,8 @@
   .menu-item {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 8px 0;
     cursor: pointer;
-    transition: background-color 0.3s;
   }
   
   .menu-item:hover {
@@ -31,19 +37,31 @@
   }
   
   .icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
   
-  .menu-item span {
-    font-size: 16px;
+  .icon.document {
+    background-image: url('../../../assets/document.png');
   }
   
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .menu-container {
-      width: 100%;
-      margin: 10px 0;
-    }
+  .icon.dollar {
+    background-image: url('../../../assets/dollar.png');
+  }
+  
+  .icon.minus {
+    background-image: url('../../../assets/retiro.png');
+  }
+
+  .menu-list.vertical {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-list.vertical .menu-item {
+    margin-bottom: 10px; 
   }
