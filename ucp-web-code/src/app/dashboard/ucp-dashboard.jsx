@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/logo04.jpg';
 import './dashboard.css';
+import '../../components/ui/Menus/menu.css';
+// New imports for the dropdown menus
+import ProcessesMenu from '../../components/ui/Menus/processMenu';
+import ReportsMenu from '../../components/ui/Menus/reportsMenu';
+
 
 export default function Dashboard() {
   const [studentInfo, setStudentInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     // Simulate fetching student data
@@ -41,6 +47,9 @@ export default function Dashboard() {
     return <div>No student information available.</div>;
   }
 
+  const toggleDropdown = (menu) => {
+    setActiveDropdown(activeDropdown === menu ? null : menu);
+  };
 
   return (
     <div className="dashboard">
@@ -60,27 +69,33 @@ export default function Dashboard() {
       <nav className="nav">
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#procesos">Procesos</a></li>
-          <li><a href="#reportes">Reportes</a></li>
+          <li>
+            <a href="#procesos" onClick={() => toggleDropdown('processes')}>Procesos</a>
+            {activeDropdown === 'processes' && <ProcessesMenu />}
+          </li>
+          <li>
+            <a href="#reportes" onClick={() => toggleDropdown('reports')}>Reportes</a>
+            {activeDropdown === 'reports' && <ReportsMenu />}
+          </li>
           <li><a href="#asignaturas">Asignaturas</a></li>
         </ul>
       </nav>
 
       <div className="student-info-card">
-          <h2>Datos Generales</h2>
-          <div className="info-grid">
-            <div>
-              <p><strong>ID:</strong> {studentInfo.id}</p>
-              <p><strong>Carrera:</strong> {studentInfo.career}</p>
-              <p><strong>Cuatrimestre de Ingreso:</strong> {studentInfo.enrollmentQuarter}</p>
-            </div>
-            <div>
-              <p><strong>Índice General:</strong> {studentInfo.generalIndex}</p>
-              <p><strong>Índice Cuatrimestral:</strong> {studentInfo.quarterlyIndex}</p>
-              <p><strong>Último Cuatrimestre:</strong> {studentInfo.lastQuarter}</p>
-            </div>
+        <h2>Datos Generales</h2>
+        <div className="info-grid">
+          <div>
+            <p><strong>ID:</strong> {studentInfo.id}</p>
+            <p><strong>Carrera:</strong> {studentInfo.career}</p>
+            <p><strong>Cuatrimestre de Ingreso:</strong> {studentInfo.enrollmentQuarter}</p>
+          </div>
+          <div>
+            <p><strong>Índice General:</strong> {studentInfo.generalIndex}</p>
+            <p><strong>Índice Cuatrimestral:</strong> {studentInfo.quarterlyIndex}</p>
+            <p><strong>Último Cuatrimestre:</strong> {studentInfo.lastQuarter}</p>
           </div>
         </div>
+      </div>
 
       <main className="main">
         <div className="widget-grid">
@@ -113,8 +128,6 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-
-        
       </main>
     </div>
   );
