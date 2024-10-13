@@ -1,87 +1,49 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Poppins, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
   }
   
   .course-pre-selection {
-    max-width: 1200px;
+    width: 1300px;
     margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .logo {
-    height: 50px;
-  }
-  
-  nav ul {
-    display: flex;
-    list-style-type: none;
     padding: 0;
-  }
-  
-  nav ul li {
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logout-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .logout-button svg {
-    width: 24px;
-    height: 24px;
+    
   }
   
   main {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
   h2 {
+    text-align: left;
+    margin-bottom: 0.5rem;
     color: #4a0e78;
   }
   
   .search-container {
-    display: flex;
+    display: inline-block;
     margin-bottom: 20px;
+    
   }
   
-  .search-container input {
+  .search-container input[type=text] {
     flex-grow: 1;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #c5c5c5;
     border-radius: 4px 0 0 4px;
+    background-color: #f9f9f9;
+    width: 500px;
+    justify-content: center;
   }
   
-  .search-container button {
+  .search-presel {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #4a0e78;
