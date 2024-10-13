@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import './dashboard.css';
 import '../../components/ui/Menus/menu.css';
-// New imports for the dropdown menus
-import ProcessesMenu from '../../components/ui/Menus/processMenu';
-import ReportsMenu from '../../components/ui/Menus/reportsMenu';
-
+import WebHeader from '../../components/ui/WebHeader/WebHeader';
 
 export default function Dashboard() {
   const [studentInfo, setStudentInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     // Simulate fetching student data
@@ -47,14 +42,9 @@ export default function Dashboard() {
     return <div>No student information available.</div>;
   }
 
-  const toggleDropdown = (menu) => {
-    setActiveDropdown(activeDropdown === menu ? null : menu);
-  };
-
   return (
     <div className="dashboard">
-      
-
+      <WebHeader/>
       <div className="student-info-card">
         <h2>Datos Generales</h2>
         <div className="info-grid">
