@@ -2,15 +2,18 @@ body {
     margin: 0;
     font-family: Poppins, sans-serif;
     color: #333;
-    background-color: #f0f0f0;
+    
     
   }
   
   
   .main {
-    padding: 2rem;
+    padding: 0rem;
     position: absolute;
-    right: 2rem;
+    top: 12rem;
+    right: 3rem;
+    background-color: transparent;
+    margin: 1rem;
     
   }
   
@@ -20,10 +23,11 @@ body {
     gap: 1rem;
     margin-bottom: 2rem;
     width:30rem;
+    
   }
   
   .widget {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -60,6 +64,8 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin: 2rem;
     position: absolute;
+    left: 0.02rem;
+    top: 11rem;
     width: 50rem;
   }
   
