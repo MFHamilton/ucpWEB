@@ -1,32 +1,40 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Poppins, sans-serif;
     color: #333;
     background-color: #f0f0f0;
+    
   }
   
   .dashboard {
-    min-height: 100vh;
+    height: 1080px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0;
   }
   
   .header {
     background-color: #fff;
-    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
   }
   
-  .logo-container {
+  .logo-container-dashboard {
     display: flex;
     align-items: center;
   }
   
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 1rem;
+  .logo-dashboard {
+    width: 150px;
+    height: 100%;
+    margin-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 1rem ;
+    padding-bottom: 1rem;
   }
   
   .title {
@@ -54,17 +62,20 @@ body {
   .nav {
     background-color: #4a0e78;
     padding: 0.5rem 1rem;
+    
   }
   
   .nav ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0.2rem;
+    padding-left: 1rem;
     margin: 0;
     display: flex;
+    justify-content: space-around;
   }
   
   .nav li {
-    margin-right: 1rem;
+    margin-right: 3rem;
   }
   
   .nav a {
@@ -79,6 +90,9 @@ body {
   
   .main {
     padding: 2rem;
+    position: absolute;
+    right: 2rem;
+    
   }
   
   .widget-grid {
@@ -86,6 +100,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
+    width:30rem;
   }
   
   .widget {
@@ -124,6 +139,9 @@ body {
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 2rem;
+    position: absolute;
+    width: 50rem;
   }
   
   .student-info-card h2 {
@@ -135,6 +153,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
+    justify-content: left;
   }
   
   .info-grid p {
