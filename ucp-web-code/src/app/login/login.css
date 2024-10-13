@@ -13,12 +13,13 @@
     display: flex;
     align-items: left;
     justify-content: center;
-    padding-left: 5rem;
+    
   }
   
   .login-form {
     width: 100%;
     max-width: 400px;
+    
   }
 
   body{
@@ -32,15 +33,16 @@
   
   .logo-container {
     justify-content: center;
-    margin-top: 4rem;
+    margin-top: 6rem;
     margin-bottom: 2rem;
     width: 30rem;
-
   }
   
   .logo {
-    max-width: 100%;
-    margin-bottom: 1px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5px;
+
 
   }
   
@@ -51,23 +53,36 @@
   
   .form-label {
     display: block;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: bold;
     color: #3C096C;
     text-align: left;
   }
   
-  .form-input {
-    size: 100%;
+  .input[type=text] {
+    width: 500px;
     padding: 0.5rem;
-    font-size: 4rem;
+    font-size: 1.1rem;
     line-height: 1.5;
-    border: none;
+    margin-bottom: 1rem;
+    border: rgb(199, 199, 199);
     border-radius: 0.25rem;
-    box-shadow: 0.5rem 0.3rem gray;
+    box-shadow: 0.2rem 0.2rem rgba(151, 150, 150, 0.493);
     
   }
+
+  .input[type=password] {
+    width: 500px;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    border: rgb(199, 199, 199);
+    border-radius: 0.25rem;
+    box-shadow: 0.2rem 0.2rem rgba(151, 150, 150, 0.493);
+    
+  }
+
   
   .forgot-password {
     display: block;
@@ -83,7 +98,8 @@
   }
   
   .submit-button {
-    width: 100%;
+    width: 520px;
+    height: 2.7rem;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: 500;
@@ -99,8 +115,3 @@
     background-color: #6b46c1;
   }
   
-  .image-container {
-    width: 50%;
-    background-size: cover;
-    background-position: left;
-  }
