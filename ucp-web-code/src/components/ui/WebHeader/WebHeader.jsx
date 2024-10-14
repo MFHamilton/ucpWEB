@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/logo04.jpg';
 import ProcessesMenu from '../Menus/processMenu';
 import ReportsMenu from '../Menus/reportsMenu';
@@ -9,44 +10,50 @@ export default function WebHeader(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    
+    const navigate = useNavigate(); // Asegúrate de que esta línea esté aquí
 
     useEffect(() => {
         // Simulate fetching student data
         setTimeout(() => {
-          const dummyData = {
-            name: "John Doe",
-            id: "123456",
-            career: "Computer Science",
-            enrollmentQuarter: "Fall 2023",
-            generalIndex: "3.5",
-            quarterlyIndex: "3.7",
-            lastQuarter: "Spring 2024",
-            completedQuarters: "4",
-            totalQuarters: "8",
-            creditsApproved: "60",
-            totalCredits: "120"
-          };
-    
-          setStudentInfo(dummyData);
-          setLoading(false);
+            const dummyData = {
+                name: "John Doe",
+                id: "123456",
+                career: "Computer Science",
+                enrollmentQuarter: "Fall 2023",
+                generalIndex: "3.5",
+                quarterlyIndex: "3.7",
+                lastQuarter: "Spring 2024",
+                completedQuarters: "4",
+                totalQuarters: "8",
+                creditsApproved: "60",
+                totalCredits: "120"
+            };
+
+            setStudentInfo(dummyData);
+            setLoading(false);
         }, 1000);
-      }, []);
-    
-      if (loading) {
+    }, []);
+
+    if (loading) {
         return <div>Loading...</div>;
-      }
+    }
     
-      if (error) {
+    if (error) {
         return <div>Error: {error}</div>;
-      }
+    }
     
-      if (!studentInfo) {
+    if (!studentInfo) {
         return <div>No student information available.</div>;
-      }
+    }
 
     const toggleDropdown = (menu) => {
         setActiveDropdown(activeDropdown === menu ? null : menu);
-      };
+    };
+
+    const handleHomeClick = () => {
+        navigate('/dashboard'); // Redirige a la ruta del dashboard
+    };
 
     return(
         <div className="web-header">
@@ -65,7 +72,7 @@ export default function WebHeader(){
       </header>
       <nav className="nav">
         <ul>
-          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#dashboard" onClick={handleHomeClick}>Inicio</a></li>
           <li>
             <a href="#procesos" onClick={() => toggleDropdown('processes')}>Procesos</a>
             {activeDropdown === 'processes' && <ProcessesMenu />}
