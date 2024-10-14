@@ -1,11 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Menus/menu.css';
 
-export default function ReportsMenu() {
+function ReportsMenu() {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <div className="menu-container-reports">
       <ul className="menu-list vertical">
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/midterm')}>
           <span className="icon document"></span>
           <span>Volante de Calificaciones Medio Término</span>
         </li>
@@ -33,3 +40,5 @@ export default function ReportsMenu() {
     </div>
   );
 }
+
+export default ReportsMenu;
