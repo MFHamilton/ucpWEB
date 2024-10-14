@@ -18,6 +18,7 @@ export default function LogIn() {
   };
 
   return (
+    <div className="image-container">
     <div className="login-container"> 
     <div className="login-form-container">
       <div className="login-form">
@@ -70,9 +71,10 @@ export default function LogIn() {
             Ingresar
           </Button>
         </form>
-        <div style={{ backgroundImage: `url(${background})` }}></div>
+        
       </div>
     </div>
+  </div>
   </div>
     
   );
