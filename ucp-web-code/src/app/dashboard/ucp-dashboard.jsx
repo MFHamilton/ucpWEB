@@ -22,7 +22,15 @@ export default function Dashboard() {
         completedQuarters: "4",
         totalQuarters: "8",
         creditsApproved: "60",
-        totalCredits: "120"
+        totalCredits: "120",
+        schedule: [
+          { subject: "Matemáticas", classroom: "A101", monday: "8:00 - 10:00", wednesday: "8:00 - 10:00", friday: "8:00 - 10:00" },
+          { subject: "Programación", classroom: "B202", tuesday: "10:00 - 12:00", thursday: "10:00 - 12:00" },
+          { subject: "Física", classroom: "C303", monday: "14:00 - 16:00", wednesday: "14:00 - 16:00" },
+          { subject: "Bases de Datos", classroom: "D404", tuesday: "14:00 - 16:00", thursday: "14:00 - 16:00" },
+          { subject: "Inglés", classroom: "E505", friday: "10:00 - 12:00" },
+          { subject: "Laboratorio", classroom: "F606", saturday: "8:00 - 12:00" },
+        ]
       };
 
       setStudentInfo(dummyData);
@@ -44,7 +52,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      <WebHeader/>
+      <WebHeader />
       <div className="student-info-card">
         <h2>Datos Generales</h2>
         <div className="info-grid">
@@ -61,30 +69,31 @@ export default function Dashboard() {
         </div>
       </div>
 
+      
       <main className="main">
         <div className="widget-grid">
-          <div className="widget">
+          <div className="widget widget-index-cuatrimestral">
             <h2>Índice Cuatrimestral</h2>
             <p className="widget-value">{studentInfo.quarterlyIndex}</p>
             <div className="progress-bar">
               <div className="progress-fill" style={{width: `${(parseFloat(studentInfo.quarterlyIndex) / 4) * 100}%`}}></div>
             </div>
           </div>
-          <div className="widget">
+          <div className="widget widget-cuatrimestres-cursados">
             <h2>Cuatrimestres Cursados</h2>
             <p className="widget-value">{studentInfo.completedQuarters} de {studentInfo.totalQuarters}</p>
             <div className="progress-bar">
               <div className="progress-fill" style={{width: `${(parseInt(studentInfo.completedQuarters) / parseInt(studentInfo.totalQuarters)) * 100}%`}}></div>
             </div>
           </div>
-          <div className="widget">
+          <div className="widget widget-creditos-aprobados">
             <h2>Créditos Aprobados</h2>
             <p className="widget-value">{studentInfo.creditsApproved} de {studentInfo.totalCredits}</p>
             <div className="progress-bar">
               <div className="progress-fill" style={{width: `${(parseInt(studentInfo.creditsApproved) / parseInt(studentInfo.totalCredits)) * 100}%`}}></div>
             </div>
           </div>
-          <div className="widget">
+          <div className="widget widget-indice-general">
             <h2>Índice General</h2>
             <p className="widget-value">{studentInfo.generalIndex}</p>
             <div className="progress-bar">
@@ -93,6 +102,40 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
+
+      <div className="schedule-table">
+        <div className="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Materia</th>
+                <th>Aula</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <th>Sábado</th>
+              </tr>
+            </thead>
+            <tbody>
+              {studentInfo.schedule.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.subject}</td>
+                  <td>{item.classroom}</td>
+                  <td>{item.monday || '-'}</td>
+                  <td>{item.tuesday || '-'}</td>
+                  <td>{item.wednesday || '-'}</td>
+                  <td>{item.thursday || '-'}</td>
+                  <td>{item.friday || '-'}</td>
+                  <td>{item.saturday || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   );
 }

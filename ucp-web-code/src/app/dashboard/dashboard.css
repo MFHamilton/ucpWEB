@@ -1,99 +1,174 @@
-body {
-    margin: 0;
-    font-family: Poppins, sans-serif;
-    color: #333;
-    
-    
+.main {
+  padding: 0;
+  position: absolute;
+  top: 10rem;
+  right: 2rem;
+  background-color: transparent;
+
+}
+
+body{
+  background-color: #fdfdfd;
+
+}
+
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 100%;
+  padding: 0px;
+  margin: 0rem;
+  
+}
+
+.widget {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.widget h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.widget-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #000000;
+  height: 100%;
+}
+
+.student-info-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
+  margin: 2rem;
+  position: absolute;
+  left: 0.02rem;
+  top: 12rem;
+  width: 40rem;
+}
+
+.student-info-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  justify-content: left;
+}
+
+.info-grid p {
+  margin: 0.5rem 0;
+}
+
+.schedule-table {
+  margin-top: 1;
+  width: 92.7%;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: absolute;
+  left: 2rem;
+  top: 32rem;
+}
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.schedule-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px; /* Asegura que la tabla no se comprima demasiado en pantallas pequeñas */
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.schedule-table th {
+  background-color: #4a0e78;
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.schedule-table tr:last-child td {
+  border-bottom: none;
+}
+
+.schedule-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .schedule-table {
+    padding: 10px;
   }
   
-  
-  .main {
-    padding: 0rem;
-    position: absolute;
-    top: 12rem;
-    right: 3rem;
-    background-color: transparent;
-    margin: 1rem;
-    
+  .schedule-table th,
+  .schedule-table td {
+    padding: 8px;
   }
-  
+}
+
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #4a0e78;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+@media (max-width: 768px) {
   .widget-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-    width:30rem;
-    
+    grid-template-columns: 1fr;
   }
-  
-  .widget {
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .widget h2 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .widget-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #4a0e78;
-    margin-bottom: 0.5rem;
-  }
-  
-  .progress-bar {
-    background-color: #e0e0e0;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .progress-fill {
-    background-color: #4a0e78;
-    height: 100%;
-  }
-  
-  .student-info-card {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin: 2rem;
-    position: absolute;
-    left: 0.02rem;
-    top: 11rem;
-    width: 50rem;
-  }
-  
-  .student-info-card h2 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    justify-content: left;
-  }
-  
-  .info-grid p {
-    margin: 0.5rem 0;
-  }
-  
-  .loading, .error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 1.5rem;
-    color: #4a0e78;
-  }
-  
-  .error {
-    color: #d32f2f;
-  }
+}
+
+.widget-index-cuatrimestral {
+  background-color: #ffcccc; /* Color para el primer widget */
+}
+
+.widget-cuatrimestres-cursados {
+  background-color: #ccffcc; /* Color para el segundo widget */
+}
+
+.widget-creditos-aprobados {
+  background-color: #ccccff; /* Color para el tercer widget */
+}
+
+.widget-indice-general {
+  background-color: #ffffcc; /* Color para el cuarto widget */
+}
