@@ -67,6 +67,8 @@ export default function CoursePreSelection() {
           />
           <Button type="submit" className='search-button'>Buscar</Button>
         </form>
+        
+        {successMessage && <div className="success-message">{successMessage}</div>}
 
         <div className="course-sections">
           <div className="course-list">
@@ -100,7 +102,7 @@ export default function CoursePreSelection() {
 
         <button className="save-button" onClick={handleSave}>Guardar</button>
 
-        {successMessage && <div className="success-message">{successMessage}</div>}
+        
       </main>
     </div>
   );
