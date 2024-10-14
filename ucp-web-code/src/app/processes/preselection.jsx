@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import WebHeader from '../../components/ui/WebHeader/WebHeader';
+import WebHeader from "../../components/ui/WebHeader/WebHeader";
 import Button from '../../components/ui/Button/button';
-import Input from '../../components/ui/Button/input';
 import './preselection.css';
 
 // Mock data for demonstration purposes
@@ -23,13 +22,16 @@ export default function CoursePreSelection() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault(); // Prevent form submission
     const course = coursesData[searchTerm.toUpperCase()];
     if (course) {
       setSelectedCourse({ id: searchTerm.toUpperCase(), ...course });
       setShowDropdown(false);
     } else {
       setSelectedCourse(null);
+      setSuccessMessage('Curso no encontrado');
+      setTimeout(() => setSuccessMessage(''), 3000);
     }
   };
 
@@ -41,6 +43,8 @@ export default function CoursePreSelection() {
     const newCourse = { ...selectedCourse, selectedSchedule: schedule };
     setPreSelectedCourses([...preSelectedCourses, newCourse]);
     setShowDropdown(false);
+    setSearchTerm('');
+    setSelectedCourse(null);
   };
 
   const handleSave = () => {
@@ -51,18 +55,18 @@ export default function CoursePreSelection() {
   return (
     <div className="course-pre-selection">
       <WebHeader/>
+
       <main>
         <h2>Preselección</h2>
-        <div className="search-container">
+        <form onSubmit={handleSearch} className="search-container">
           <input
             type="text"
-            required
             placeholder="Ingrese el código o nombre de la asignatura"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button type="submit" className='search-presel'>Buscar</Button>
-        </div>
+          <Button type="submit" className='search-button'>Buscar</Button>
+        </form>
 
         <div className="course-sections">
           <div className="course-list">

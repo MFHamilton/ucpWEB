@@ -10,6 +10,7 @@ body {
     margin: 0 auto;
     padding: 0;
     
+    
   }
   
   main {
@@ -43,7 +44,7 @@ body {
     justify-content: center;
   }
   
-  .search-presel {
+  .search-button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #4a0e78;
@@ -63,6 +64,7 @@ body {
     background-color: #f9f9f9;
     padding: 15px;
     border-radius: 4px;
+    height: 250px;
   }
   
   h3 {
