@@ -56,7 +56,7 @@ export default function CoursePreSelection() {
     <div className="course-pre-selection">
       <WebHeader/>
 
-      <main>
+      <main className='main-preselection'>
         <h2>Preselección</h2>
         <form onSubmit={handleSearch} className="search-container">
           <input

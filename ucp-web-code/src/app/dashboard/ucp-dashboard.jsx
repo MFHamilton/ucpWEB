@@ -70,7 +70,7 @@ export default function Dashboard() {
       </div>
 
       
-      <main className="main">
+      <main className="main-dashboard">
         <div className="widget-grid">
           <div className="widget widget-index-cuatrimestral">
             <h2>Índice Cuatrimestral</h2>
