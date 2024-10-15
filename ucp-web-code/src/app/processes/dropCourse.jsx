@@ -59,10 +59,10 @@ export default function CoursePreSelection() {
     <div className="course-pre-selection">
       <WebHeader/>
       <main className='main-preselection'>
-        <h2 style={{ marginBottom: '20px'}}>Retiro de Asignatura</h2>
+        <h2 style={{marginBottom: '20px'}}>Retiro de Asignatura</h2>
         <div className="course-sections">
           <div className="course-list">
-            <h3>Asignaturas</h3>
+            <h3>Asignatura</h3>
             {selectedCourse && (
               <div className="course-item" onClick={handleCourseClick}>
                 <span>{selectedCourse.id} - {selectedCourse.name}</span>
@@ -80,7 +80,7 @@ export default function CoursePreSelection() {
           </div>
 
           <div className="pre-selection">
-            <h3>Preselección</h3>
+            <h3>Retirar</h3>
             {preSelectedCourses.map((course, index) => (
               <div key={index} className="pre-selected-course">
                 <span>{course.id} - {course.name}</span>
@@ -91,6 +91,8 @@ export default function CoursePreSelection() {
         </div>
 
         <button className="save-button" onClick={handleSave}>Guardar</button>
+
+        
       </main>
     </div>
   );
