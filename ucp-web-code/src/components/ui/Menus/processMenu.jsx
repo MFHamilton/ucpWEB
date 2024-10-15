@@ -20,7 +20,7 @@ export default function ProcessesMenu() {
           <span className="icon document"></span>
           <span>Selección</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/retiro')}>
           <span className="icon document"></span>
           <span>Retiro</span>
         </li>
