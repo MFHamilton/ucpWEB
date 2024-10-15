@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WebHeader from "../../components/ui/WebHeader/WebHeader";
 import Button from '../../components/ui/Button/button';
-import './preselection.css';
+import './processes.css';
 
 // Mock data for demonstration purposes
 const coursesData = {
@@ -16,26 +16,9 @@ const coursesData = {
 };
 
 export default function CoursePreSelection() {
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [preSelectedCourses, setPreSelectedCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // Nueva variable para mensajes de error
-
-  const handleSearch = (e) => {
-    e.preventDefault(); // Prevent form submission
-    const course = coursesData[searchTerm.toUpperCase()];
-    if (course) {
-      setSelectedCourse({ id: searchTerm.toUpperCase(), ...course });
-      setShowDropdown(false);
-      setErrorMessage(''); // Limpiar mensaje de error al buscar
-    } else {
-      setSelectedCourse(null);
-      setErrorMessage('Curso no encontrado'); // Establecer mensaje de error
-      setTimeout(() => setErrorMessage(''), 3000);
-    }
-  };
 
   const handleCourseClick = () => {
     setShowDropdown(!showDropdown);
@@ -55,6 +38,16 @@ export default function CoursePreSelection() {
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
+  const handleMoveToPreSelected = (courseId) => {
+    const courseToMove = coursesData[courseId];
+    if (courseToMove) {
+      const newCourse = { id: courseId, name: courseToMove.name, selectedSchedule: null };
+      setPreSelectedCourses([...preSelectedCourses, newCourse]);
+      setSuccessMessage(`Curso ${courseToMove.name} movido a Retirar con éxito`); // Mensaje de éxito
+      setTimeout(() => setSuccessMessage(''), 3000);
+    }
+  };
+
   return (
     <div className="course-pre-selection">
       <WebHeader/>
@@ -63,12 +56,21 @@ export default function CoursePreSelection() {
         <div className="course-sections">
           <div className="course-list">
             <h3>Asignatura</h3>
-            {selectedCourse && (
-              <div className="course-item" onClick={handleCourseClick}>
-                <span>{selectedCourse.id} - {selectedCourse.name}</span>
-                {showDropdown && (
+            {Object.keys(coursesData).map(courseId => (
+              <div 
+                key={courseId} className="course-item" 
+                onClick={() => handleCourseClick(courseId)} 
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'left' }}>
+                <span>{courseId} - {coursesData[courseId].name}</span>
+                <img 
+                  src="src/assets/cuadrado-x.png" 
+                  alt="Eliminar" 
+                  style={{ width: '20px', height: '20px' }} 
+                  onClick={() => handleMoveToPreSelected(courseId)} // Llama a la nueva función al hacer clic
+                /> 
+                {showDropdown && selectedCourse?.id === courseId && (
                   <ul className="schedule-dropdown">
-                    {selectedCourse.schedules.map((schedule, index) => (
+                    {coursesData[courseId].schedules.map((schedule, index) => (
                       <li key={index} onClick={() => handleScheduleSelect(schedule)}>
                         {schedule.time} - {schedule.professor}
                       </li>
@@ -76,7 +78,7 @@ export default function CoursePreSelection() {
                   </ul>
                 )}
               </div>
-            )}
+            ))}
           </div>
 
           <div className="pre-selection">
