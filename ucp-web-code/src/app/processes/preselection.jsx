@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WebHeader from "../../components/ui/WebHeader/WebHeader";
 import Button from '../../components/ui/Button/button';
-import './preselection.css';
+import './processes.css';
 
 // Mock data for demonstration purposes
 const coursesData = {
