@@ -21,6 +21,7 @@ export default function CoursePreSelection() {
   const [preSelectedCourses, setPreSelectedCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // Nueva variable para mensajes de error
 
   const handleSearch = (e) => {
     e.preventDefault(); // Prevent form submission
@@ -28,10 +29,11 @@ export default function CoursePreSelection() {
     if (course) {
       setSelectedCourse({ id: searchTerm.toUpperCase(), ...course });
       setShowDropdown(false);
+      setErrorMessage(''); // Limpiar mensaje de error al buscar
     } else {
       setSelectedCourse(null);
-      setSuccessMessage('Curso no encontrado');
-      setTimeout(() => setSuccessMessage(''), 3000);
+      setErrorMessage('Curso no encontrado'); // Establecer mensaje de error
+      setTimeout(() => setErrorMessage(''), 3000);
     }
   };
 
@@ -48,7 +50,8 @@ export default function CoursePreSelection() {
   };
 
   const handleSave = () => {
-    setSuccessMessage('Preselección guardada con éxito');
+    setSuccessMessage('Preselección guardada con éxito'); // Establecer mensaje de éxito
+    setErrorMessage(''); // Limpiar mensaje de error al guardar
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
@@ -68,6 +71,7 @@ export default function CoursePreSelection() {
         </form>
         
         {successMessage && <div className="success-message">{successMessage}</div>}
+        {errorMessage && <div className="error-message">{errorMessage}</div>} 
 
         <div className="course-sections">
           <div className="course-list">

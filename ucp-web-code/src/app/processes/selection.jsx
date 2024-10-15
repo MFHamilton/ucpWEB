@@ -19,36 +19,51 @@ export default function CoursePreSelection() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [preSelectedCourses, setPreSelectedCourses] = useState([]);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [activeCourse, setActiveCourse] = useState(null); // Track active course for schedule change
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSearch = (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     const course = coursesData[searchTerm.toUpperCase()];
     if (course) {
       setSelectedCourse({ id: searchTerm.toUpperCase(), ...course });
-      setShowDropdown(false);
+      setSuccessMessage(''); // Clear success message on search
     } else {
       setSelectedCourse(null);
-      setSuccessMessage('Curso no encontrado');
-      setTimeout(() => setSuccessMessage(''), 3000);
+      setErrorMessage('Curso no encontrado'); // Set error message
+      setTimeout(() => setErrorMessage(''), 3000);
     }
   };
 
-  const handleCourseClick = () => {
-    setShowDropdown(!showDropdown);
+  const handleCourseClick = (course) => {
+    // Toggle the active course
+    if (activeCourse && activeCourse.id === course.id) {
+      setActiveCourse(null); // Close the dropdown
+    } else {
+      setActiveCourse(course); // Set the clicked course as active
+    }
   };
 
   const handleScheduleSelect = (schedule) => {
     const newCourse = { ...selectedCourse, selectedSchedule: schedule };
     setPreSelectedCourses([...preSelectedCourses, newCourse]);
-    setShowDropdown(false);
+    setActiveCourse(null);
     setSearchTerm('');
     setSelectedCourse(null);
   };
 
+  const handleScheduleChange = (course, newSchedule) => {
+    const updatedCourses = preSelectedCourses.map((c) => 
+      c.id === course.id ? { ...c, selectedSchedule: newSchedule } : c
+    );
+    setPreSelectedCourses(updatedCourses);
+    setActiveCourse(null);
+  };
+
   const handleSave = () => {
-    setSuccessMessage('Preselección guardada con éxito');
+    setSuccessMessage('Selección guardada con éxito'); // Set success message
+    setErrorMessage(''); // Clear error message on save
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
@@ -68,14 +83,31 @@ export default function CoursePreSelection() {
         </form>
         
         {successMessage && <div className="success-message">{successMessage}</div>}
+        {errorMessage && <div className="error-message">{errorMessage}</div>} 
 
         <div className="course-sections">
           <div className="course-list">
             <h3>Asignatura</h3>
+            {preSelectedCourses.map((course) => (
+              <div key={course.id} className="course-item">
+                <span>{course.id} - {course.name} - {course.selectedSchedule.time} - {course.selectedSchedule.professor}</span>
+                <button onClick={() => handleCourseClick(course)}>Cambiar Horario</button>
+                {activeCourse && activeCourse.id === course.id && (
+                  <ul className="schedule-dropdown">
+                    {course.schedules.map((schedule, index) => (
+                      <li key={index} onClick={() => handleScheduleChange(course, schedule)}>
+                        {schedule.time} - {schedule.professor}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+
             {selectedCourse && (
-              <div className="course-item" onClick={handleCourseClick}>
+              <div className="course-item" onClick={() => handleCourseClick(selectedCourse)}>
                 <span>{selectedCourse.id} - {selectedCourse.name}</span>
-                {showDropdown && (
+                {activeCourse && activeCourse.id === selectedCourse.id && (
                   <ul className="schedule-dropdown">
                     {selectedCourse.schedules.map((schedule, index) => (
                       <li key={index} onClick={() => handleScheduleSelect(schedule)}>
@@ -90,8 +122,6 @@ export default function CoursePreSelection() {
         </div>
 
         <button className="save-button" onClick={handleSave}>Guardar</button>
-
-        
       </main>
     </div>
   );
