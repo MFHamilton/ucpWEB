@@ -16,7 +16,7 @@ export default function ProcessesMenu() {
           <span className="icon document"></span>
           <span>Preselección</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/seleccion')}>
           <span className="icon document"></span>
           <span>Selección</span>
         </li>

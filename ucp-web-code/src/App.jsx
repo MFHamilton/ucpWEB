@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import LogIn from './app/login/ucp-login.jsx';
 import Dashboard from './app/dashboard/ucp-dashboard.jsx';
 import Preseleccion from './app/processes/preselection.jsx';
+import Seleccion from './app/processes/selection.jsx';
 import MidTerm from './app/reports/midTerm.jsx';
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<LogIn />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/preseleccion" element={<Preseleccion />} />
+        <Route path="/seleccion" element={<Seleccion />} />
         <Route path="/midterm" element={<MidTerm />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
