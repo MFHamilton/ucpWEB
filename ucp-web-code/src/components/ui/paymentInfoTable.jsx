@@ -34,11 +34,10 @@ export const TableCell = ({ children }) => {
 const PaymentInfoTable = ({ paymentData }) => {
   return (
     <div className="payment-info-table">
-      <h2>Hoja de Pago</h2>
       <table>
         <thead>
           <tr>
-            <th>Concepto</th>
+            <th>Concept</th>
             <th>(Aula) Horarios</th>
             <th>Cr</th>
             <th>Fecha</th>

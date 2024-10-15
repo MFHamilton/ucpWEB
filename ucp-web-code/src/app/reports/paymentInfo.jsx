@@ -4,6 +4,12 @@ import { Download } from "lucide-react";
 import WebHeader from "../../components/ui/WebHeader/WebHeader"; // Importing the WebHeader component
 import "./paymentInfo.css"; // Importing the CSS stylesheet
 
+// PARA ESTA PANTALLA HAY QUE TOMAR LA INFORMACION DE LA BASE DE DATOS 
+// Y QUE APAREZCA DIVIDIDO EN 3 PAGO
+// MATRICULA DEBE APARECER ANTES DE TODAS LAS MATERIAS
+// HACER QUE EL BOTON DE GENERAR REPORTE, GENERE EL REPORTE AL DAR CLICK
+// NO ES NECESARIO QUE  EL BOTON DESCARGAR FUNCIONE
+
 export default function PaymentInfo() {
   const studentInfo = {
     trimester: "AGOSTO - OCTUBRE 2024",
@@ -13,50 +19,29 @@ export default function PaymentInfo() {
   };
 
   const courses = [
-    // Your courses array...
+    { code: "CS101", name: "Introducción a la Programación", schedule: "Lunes 10:00 - 12:00", credits: 3, date: "01/09/2024" },
+    { code: "CS102", name: "Estructuras de Datos", schedule: "Miércoles 10:00 - 12:00", credits: 3, date: "01/09/2024" },
   ];
 
   const charges = [
-    // Your charges array...
+    { concept: "Matrícula", date: "01/09/2024", amount: 5000 },
+    { concept: "Cuota Mensual", date: "01/10/2024", amount: 2000 },
   ];
 
   const payments = [
-    // Your payments array...
+    { installment: "Pago 1", amount: 5000, dueDate: "01/09/2024" },
+    { installment: "Pago 2", amount: 2000, dueDate: "01/10/2024" },
   ];
 
   return (
     <div className="payment-info">
-      <WebHeader /> {/* Using the WebHeader component */}
-      
+      <WebHeader />
       <div className="payment-content">
-        <header className="header-section">
-          <div className="logo-title">
-            <img src="/placeholder.svg?height=50&width=50" alt="UCP Logo" className="logo" />
-            <h1 className="title">Dashboard Estudiantil</h1>
-          </div>
-          <div className="student-info">
-            <span>{studentInfo.name}</span>
-            <button className="dropdown-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" className="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </div>
-        </header>
-
-        <nav className="nav-bar">
-          <ul>
-            {["Inicio", "Procesos", "Reportes", "Asignaturas"].map((item) => (
-              <li key={item} className="nav-item">{item}</li>
-            ))}
-          </ul>
-        </nav>
-
         <div className="payment-details">
           <div className="details-header">
             <h2>Hoja de Pago</h2>
             <div className="actions">
-              <Button variant="outline">Generar Reporte</Button>
+              <Button type="submit" variant="outline">Generar Reporte</Button>
               <Button variant="outline">
                 <Download className="icon" /> Descargar
               </Button>
