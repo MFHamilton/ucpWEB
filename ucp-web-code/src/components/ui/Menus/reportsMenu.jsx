@@ -28,7 +28,7 @@ function ReportsMenu() {
           <span className="icon document"></span>
           <span>Volante de Selección</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/paymentInfo')}>
           <span className="icon dollar"></span>
           <span>Hoja de Pago</span>
         </li>
