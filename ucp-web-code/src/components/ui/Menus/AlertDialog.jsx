@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from "./Button";
+import { Button } from "../Button/button";
 
 export function AlertDialog({ isOpen, onClose, onConfirm, title, description }) {
   if (!isOpen) return null;
