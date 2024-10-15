@@ -55,7 +55,6 @@ export default function CoursePreSelection() {
   return (
     <div className="course-pre-selection">
       <WebHeader/>
-
       <main className='main-preselection'>
         <h2>Preselección</h2>
         <form onSubmit={handleSearch} className="search-container">
@@ -65,7 +64,7 @@ export default function CoursePreSelection() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button type="submit" className='search-button'>Buscar</Button>
+          <Button type="submit" className='search-button-preselection'>Buscar</Button>
         </form>
         
         {successMessage && <div className="success-message">{successMessage}</div>}

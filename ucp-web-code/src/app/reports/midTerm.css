@@ -1,76 +1,91 @@
-.ucp-container {
-    font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+.midterm-container {
+  font-family: Poppins, sans-serif;
+  width: 1350px;
+  margin: 0 auto;
+  padding: 20px;
+  flex: content;
+  padding-left: 0;
   
-  .ucp-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    background-color: #4B0082;
-    color: white;
-  }
+}
+
+.midterm-main {
+  margin: 0px;
+}
+
+.midterm-main h3{
+  text-align: left;
+}
+
+
+.midterm-filters {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 20px;
   
-  .ucp-nav li {
-    padding: 10px 20px;
-    cursor: pointer;
-  }
+}
+
+
+.midterm-select-container {
+  display: flex;
+  flex-direction: column;
   
-  .ucp-nav li:hover {
-    background-color: #6A0DAD;
-  }
+}
   
-  .ucp-main {
-    margin-top: 20px;
-  }
-  
-  .ucp-filters {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .ucp-select-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .ucp-select-container label {
+  .midterm-select-container label {
     margin-bottom: 5px;
   }
   
-  .ucp-select-container select {
+  .midterm-select-container select {
     padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    border-radius: 3px;
+    border: 1px solid #3C096C;
+  }
+
+  .search-button-midterm {
+    width: 200px;
+    height: 2.7rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: #3C096C;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+  }
+
+  .search-button-midterm:hover {
+    background-color: #6b46c1;
   }
   
-  .ucp-student-info {
+  .midterm-student-info {
     background-color: #f0f0f0;
+    display: inline-block;
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 20px;
+    text-align: left;
+    width: 50%;
   }
   
-  .ucp-courses-table {
+  .mid-courses-table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .ucp-courses-table th,
-  .ucp-courses-table td {
+  .mid-courses-table th,
+  .mid-courses-table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 5px;
     text-align: left;
   }
   
-  .ucp-courses-table th {
+  .mid-courses-table th {
     background-color: #4B0082;
     color: white;
   }
   
-  .ucp-courses-table tr:nth-child(even) {
+  .mid-courses-table tr:nth-child(even) {
     background-color: #f2f2f2;
   }
