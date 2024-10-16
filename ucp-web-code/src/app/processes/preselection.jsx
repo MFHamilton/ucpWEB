@@ -1,19 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WebHeader from "../../components/ui/WebHeader/WebHeader";
 import Button from '../../components/ui/Button/button';
 import './processes.css';
-
-// Mock data for demonstration purposes
-const coursesData = {
-  'MAT101': { name: 'Matemáticas Básicas', schedules: [
-    { time: 'Lun/Mie 10:00-12:00', professor: 'Dr. García' },
-    { time: 'Mar/Jue 14:00-16:00', professor: 'Dra. Rodríguez' }
-  ]},
-  'FIS201': { name: 'Física General', schedules: [
-    { time: 'Mar/Jue 08:00-10:00', professor: 'Dr. Martínez' },
-    { time: 'Mie/Vie 16:00-18:00', professor: 'Dra. López' }
-  ]},
-};
 
 export default function CoursePreSelection() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,18 +9,29 @@ export default function CoursePreSelection() {
   const [preSelectedCourses, setPreSelectedCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // Nueva variable para mensajes de error
+  const [errorMessage, setErrorMessage] = useState('');
+  const [coursesData, setCoursesData] = useState({}); // State for courses from the database
+
+  // Fetch courses from the database when the component mounts
+  useEffect(() => {
+    fetch('/api/courses') // Replace with your actual API endpoint
+      .then(response => response.json())
+      .then(data => {
+        setCoursesData(data); // Store courses data in state
+      })
+      .catch(error => console.error('Error fetching courses:', error));
+  }, []);
 
   const handleSearch = (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     const course = coursesData[searchTerm.toUpperCase()];
     if (course) {
       setSelectedCourse({ id: searchTerm.toUpperCase(), ...course });
       setShowDropdown(false);
-      setErrorMessage(''); // Limpiar mensaje de error al buscar
+      setErrorMessage('');
     } else {
       setSelectedCourse(null);
-      setErrorMessage('Curso no encontrado'); // Establecer mensaje de error
+      setErrorMessage('Curso no encontrado');
       setTimeout(() => setErrorMessage(''), 3000);
     }
   };
@@ -50,8 +49,10 @@ export default function CoursePreSelection() {
   };
 
   const handleSave = () => {
-    setSuccessMessage('Preselección guardada con éxito'); // Establecer mensaje de éxito
-    setErrorMessage(''); // Limpiar mensaje de error al guardar
+    // Save the preSelectedCourses for later use
+    localStorage.setItem('preSelectedCourses', JSON.stringify(preSelectedCourses));
+    setSuccessMessage('Preselección guardada con éxito');
+    setErrorMessage('');
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
@@ -104,8 +105,6 @@ export default function CoursePreSelection() {
         </div>
 
         <button className="save-button" onClick={handleSave}>Guardar</button>
-
-        
       </main>
     </div>
   );
