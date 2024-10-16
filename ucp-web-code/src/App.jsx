@@ -7,6 +7,7 @@ import Seleccion from './app/processes/selection.jsx';
 import Retiro from './app/processes/dropCourse.jsx';
 import MidTerm from './app/reports/midTerm.jsx';
 import PaymentInfo from './app/reports/paymentInfo.jsx';
+import CourseSearch from '../src/app/courses/searchCourses.jsx';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/retiro" element={<Retiro />} />
         <Route path="/midterm" element={<MidTerm />} />
         <Route path="/paymentInfo" element={<PaymentInfo />} />
+        <Route path="/coursesearch" element={<CourseSearch />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
