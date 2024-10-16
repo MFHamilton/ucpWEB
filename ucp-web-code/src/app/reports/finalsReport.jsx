@@ -19,7 +19,7 @@ export default function finalsReport() {
     <div className="midterm-report">
       <WebHeader />
       <main>
-        <h3>Volante de Medio Término</h3>
+        <h3>Volante de Calificaciones Finales</h3>
         <div className="report-controls">
           <select 
             value={year} 
@@ -63,7 +63,6 @@ export default function finalsReport() {
               <th>Clave</th>
               <th>Sec</th>
               <th>Asignatura</th>
-              <th>Profesor</th>
               <th>CR</th>
               <th>Calif Base</th>
               <th>Calif</th>
