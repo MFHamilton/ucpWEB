@@ -1,11 +1,15 @@
 .web-header {
     height: 1080px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0;
+    width: 1370px;
+    position:absolute;
+    top:0;
+    left:0;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
     font-family: Poppins, Arial;
   }
+
 
   .header {
     background-color: #fff;
@@ -13,7 +17,8 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    
+    position: relative;
+    z-index: 1;
   }
 
   .logo-container-dashboard {

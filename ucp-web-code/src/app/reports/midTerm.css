@@ -1,91 +1,69 @@
-.midterm-container {
+.midterm-report {
   font-family: Poppins, sans-serif;
-  width: 1350px;
+  max-width: 1920px;
   margin: 0 auto;
   padding: 20px;
-  flex: content;
-  padding-left: 0;
-  
 }
 
-.midterm-main {
-  margin: 0px;
-}
-
-.midterm-main h3{
+main h3 {
+  color: #4B0082;
   text-align: left;
 }
 
-
-.midterm-filters {
+.report-controls {
   display: flex;
-  gap: 50px;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
+}
+
+.dropdown {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #4B0082;
+  border-radius: 4px;
+  z-index: 1;
   
 }
 
-
-.midterm-select-container {
-  display: flex;
-  flex-direction: column;
-  
+.generate-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4B0082;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1;
 }
-  
-  .midterm-select-container label {
-    margin-bottom: 5px;
-  }
-  
-  .midterm-select-container select {
-    padding: 5px;
-    border-radius: 3px;
-    border: 1px solid #3C096C;
-  }
 
-  .search-button-midterm {
-    width: 200px;
-    height: 2.7rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    background-color: #3C096C;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
+.generate-btn:hover {
+  background-color: #3a006c;
+}
 
-  }
+.student-info {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
 
-  .search-button-midterm:hover {
-    background-color: #6b46c1;
-  }
-  
-  .midterm-student-info {
-    background-color: #f0f0f0;
-    display: inline-block;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: left;
-    width: 50%;
-  }
-  
-  .mid-courses-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .mid-courses-table th,
-  .mid-courses-table td {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: left;
-  }
-  
-  .mid-courses-table th {
-    background-color: #4B0082;
-    color: white;
-  }
-  
-  .mid-courses-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.courses-table th, .courses-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.courses-table th {
+  background-color: #4B0082;
+  color: white;
+}
+
+.courses-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
