@@ -10,6 +10,7 @@ import FinalsReport from './app/reports/finalsReport.jsx';
 import PreselectionReport from './app/reports/preselectionReport.jsx';
 import SelectionReport from './app/reports/selectionReport.jsx';
 import PaymentInfo from './app/reports/paymentInfo.jsx';
+import DropCourse from './app/reports/dropCourseReport.jsx';
 import CourseSearch from '../src/app/courses/searchCourses.jsx';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/preselectionReport" element={<PreselectionReport />} />
         <Route path="/selectionReport" element={<SelectionReport />} />
         <Route path="/paymentInfo" element={<PaymentInfo />} />
+        <Route path="/dropCourse" element={<DropCourse />} />
         <Route path="/coursesearch" element={<CourseSearch />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

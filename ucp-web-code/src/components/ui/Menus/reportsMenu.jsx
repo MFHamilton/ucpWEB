@@ -32,7 +32,7 @@ function ReportsMenu() {
           <span className="icon dollar"></span>
           <span>Hoja de Pago</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/dropCourse')}>
           <span className="icon minus"></span>
           <span>Volante de Retiros</span>
         </li>
