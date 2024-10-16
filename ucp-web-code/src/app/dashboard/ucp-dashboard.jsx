@@ -8,34 +8,23 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    // Simulate fetching student data
-    setTimeout(() => {
-      const dummyData = {
-        name: "John Doe",
-        id: "123456",
-        career: "Computer Science",
-        enrollmentQuarter: "Fall 2023",
-        generalIndex: "3.5",
-        quarterlyIndex: "3.7",
-        lastQuarter: "Spring 2024",
-        completedQuarters: "4",
-        totalQuarters: "8",
-        creditsApproved: "60",
-        totalCredits: "120",
-        schedule: [
-          { subject: "Matemáticas", classroom: "A101", monday: "8:00 - 10:00", wednesday: "8:00 - 10:00", friday: "8:00 - 10:00" },
-          { subject: "Programación", classroom: "B202", tuesday: "10:00 - 12:00", thursday: "10:00 - 12:00" },
-          { subject: "Física", classroom: "C303", monday: "14:00 - 16:00", wednesday: "14:00 - 16:00" },
-          { subject: "Bases de Datos", classroom: "D404", tuesday: "14:00 - 16:00", thursday: "14:00 - 16:00" },
-          { subject: "Inglés", classroom: "E505", friday: "10:00 - 12:00" },
-          { subject: "Laboratorio", classroom: "F606", saturday: "8:00 - 12:00" },
-        ]
-      };
-
-      setStudentInfo(dummyData);
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://api.tudominio.com/student/123456'); // Cambia esto a tu endpoint real
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setStudentInfo(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   if (loading) {
@@ -69,7 +58,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      
       <main className="main-dashboard">
         <div className="widget-grid">
           <div className="widget widget-index-cuatrimestral">
@@ -135,7 +123,6 @@ export default function Dashboard() {
           </table>
         </div>
       </div>
-
     </div>
   );
 }
