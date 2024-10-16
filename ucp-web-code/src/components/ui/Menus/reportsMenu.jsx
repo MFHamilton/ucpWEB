@@ -24,7 +24,7 @@ function ReportsMenu() {
           <span className="icon document"></span>
           <span>Volante de Preselección</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/selectionReport')}>
           <span className="icon document"></span>
           <span>Volante de Selección</span>
         </li>
