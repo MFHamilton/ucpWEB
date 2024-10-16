@@ -1,15 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WebHeader from '../../components/ui/WebHeader/WebHeader';
 import './midTerm.css';
 
-export default function courseReport() {
+export default function CourseReport() {
   const [year, setYear] = useState('');
   const [quarter, setQuarter] = useState('');
+  const [reportData, setReportData] = useState(null);
+  const [studentInfo, setStudentInfo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Function to fetch report data based on year and quarter
+  const fetchReportData = async (year, quarter) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`https://your-backend-endpoint/api/report?year=${year}&quarter=${quarter}`); // Reemplaza con tu URL real
+      const data = await response.json();
+      setReportData(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching report data:', error);
+      setIsLoading(false);
+    }
+  };
+
+  // Function to fetch student information from the database
+  const fetchStudentInfo = async () => {
+    try {
+      const response = await fetch('https://your-backend-endpoint/api/student/490867'); // Reemplaza con tu URL real y ID de estudiante
+      const data = await response.json();
+      setStudentInfo(data);
+    } catch (error) {
+      console.error('Error fetching student info:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch student info when component mounts
+    fetchStudentInfo();
+  }, []);
 
   const handleGenerateReport = () => {
     if (year && quarter) {
-      alert(`Generating report for ${year} - ${quarter}`);
-      // Here you would typically make an API call to fetch the report data
+      fetchReportData(year, quarter);
     } else {
       alert('Please select both year and quarter');
     }
@@ -52,25 +84,45 @@ export default function courseReport() {
             Generar Reporte
           </button>
         </div>
-        <div className="student-info">
-          <p><strong>ID:</strong> 490867</p>
-          <p><strong>Nombre:</strong> Lucía Camila Martínez</p>
-          <p><strong>Carrera:</strong> (IND) Ingeniería Industrial</p>
-        </div>
-        <table className="courses-table">
-          <thead>
-            <tr>
-              <th>Clave</th>
-              <th>Sec</th>
-              <th>Asignatura</th>
-              <th>Profesor</th>
-              <th>CR</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Course rows would be dynamically generated here */}
-          </tbody>
-        </table>
+        
+        {isLoading ? (
+          <p>Cargando reporte...</p>
+        ) : reportData ? (
+          <>
+            {studentInfo && (
+              <div className="student-info">
+                <p><strong>ID:</strong> {studentInfo.id}</p>
+                <p><strong>Nombre:</strong> {studentInfo.name}</p>
+                <p><strong>Carrera:</strong> {studentInfo.major}</p>
+              </div>
+            )}
+
+            <table className="courses-table">
+              <thead>
+                <tr>
+                  <th>Clave</th>
+                  <th>Sec</th>
+                  <th>Asignatura</th>
+                  <th>Profesor</th>
+                  <th>CR</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reportData.courses.map((course, index) => (
+                  <tr key={index}>
+                    <td>{course.id}</td>
+                    <td>{course.section}</td>
+                    <td>{course.name}</td>
+                    <td>{course.professor}</td>
+                    <td>{course.credits}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        ) : (
+          <p>No se ha generado ningún reporte.</p>
+        )}
       </main>
     </div>
   );

@@ -1,19 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WebHeader from '../../components/ui/WebHeader/WebHeader';
 import './midTerm.css';
 
 export default function MidtermReport() {
   const [year, setYear] = useState('');
   const [quarter, setQuarter] = useState('');
+  const [studentInfo, setStudentInfo] = useState(null);
+  const [midtermGrades, setMidtermGrades] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleGenerateReport = () => {
-    if (year && quarter) {
-      alert(`Generating report for ${year} - ${quarter}`);
-      // Here you would typically make an API call to fetch the report data
-    } else {
+  // Función para obtener los datos del estudiante y las calificaciones de medio término
+  const fetchMidtermReport = async () => {
+    if (!year || !quarter) {
       alert('Please select both year and quarter');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const studentResponse = await fetch('https://your-backend-endpoint/api/student/490867'); // Reemplaza con tu endpoint
+      const studentData = await studentResponse.json();
+
+      const gradesResponse = await fetch(`https://your-backend-endpoint/api/student/490867/midterm-grades?year=${year}&quarter=${quarter}`); // Reemplaza con tu endpoint
+      const gradesData = await gradesResponse.json();
+
+      setStudentInfo(studentData);
+      setMidtermGrades(gradesData);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching midterm report:", error);
+      setIsLoading(false);
     }
   };
+
+  const handleGenerateReport = () => {
+    fetchMidtermReport();
+  };
+
+  useEffect(() => {
+    // Si es necesario, se puede cargar información inicial al montar el componente
+  }, []);
 
   return (
     <div className="midterm-report">
@@ -52,27 +79,47 @@ export default function MidtermReport() {
             Generar Reporte
           </button>
         </div>
-        <div className="student-info">
-          <p><strong>ID:</strong> 490867</p>
-          <p><strong>Nombre:</strong> Lucía Camila Martínez</p>
-          <p><strong>Carrera:</strong> (IND) Ingeniería Industrial</p>
-        </div>
-        <table className="courses-table">
-          <thead>
-            <tr>
-              <th>Clave</th>
-              <th>Sec</th>
-              <th>Asignatura</th>
-              <th>Profesor</th>
-              <th>CR</th>
-              <th>Calif Base</th>
-              <th>Calif</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Course rows would be dynamically generated here */}
-          </tbody>
-        </table>
+
+        {isLoading ? (
+          <p>Cargando datos...</p>
+        ) : (
+          <>
+            {studentInfo && (
+              <div className="student-info">
+                <p><strong>ID:</strong> {studentInfo.id}</p>
+                <p><strong>Nombre:</strong> {studentInfo.name}</p>
+                <p><strong>Carrera:</strong> {studentInfo.career}</p>
+              </div>
+            )}
+
+            <table className="courses-table">
+              <thead>
+                <tr>
+                  <th>Clave</th>
+                  <th>Sec</th>
+                  <th>Asignatura</th>
+                  <th>Profesor</th>
+                  <th>CR</th>
+                  <th>Calif Base</th>
+                  <th>Calif</th>
+                </tr>
+              </thead>
+              <tbody>
+                {midtermGrades.map((course) => (
+                  <tr key={course.code}>
+                    <td>{course.code}</td>
+                    <td>{course.section}</td>
+                    <td>{course.name}</td>
+                    <td>{course.professor}</td>
+                    <td>{course.credits}</td>
+                    <td>{course.baseGrade}</td>
+                    <td>{course.midtermGrade}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
       </main>
     </div>
   );
