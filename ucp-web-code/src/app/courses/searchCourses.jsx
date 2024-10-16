@@ -21,14 +21,6 @@ const coursesData = [
       { day: 'Viernes', time: '14:00 - 16:00', room: 'LAB-03' },
     ],
   },
-  {
-    id: 'ING213',
-    name: 'MECANICA DE SOLIDOS',
-    credits: 1,
-    schedules: [
-      { day: 'Viernes', time: '14:00 - 16:00', room: 'LAB-03' },
-    ],
-  },
 ];
 
 export default function CourseSearch() {
@@ -46,8 +38,9 @@ export default function CourseSearch() {
 
   return (
     <div className="course-search">
-      <WebHeader/ >
-      <h3>Oferta Académica </h3>
+        <WebHeader />
+
+      <h3>Oferta Académica</h3>
 
       <div className="search-container">
         <input
@@ -62,7 +55,7 @@ export default function CourseSearch() {
 
       <div className="courses-container">
         <div className="course-category">
-          <h2>INGENIERIAS (IN)</h2>
+          <h3>ASIGNATURAS</h3>
 
           {filteredCourses.map((course) => (
             <div key={course.id} className="course-item">
