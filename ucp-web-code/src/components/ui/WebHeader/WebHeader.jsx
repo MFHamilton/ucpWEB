@@ -52,7 +52,11 @@ export default function WebHeader(){
     };
 
     const handleHomeClick = () => {
-        navigate('/dashboard'); // Redirige a la ruta del dashboard
+        navigate('/dashboard'); 
+    };
+
+    const handleCoursesClick = () => {
+      navigate('/coursesearch'); 
     };
 
     return(
@@ -81,7 +85,7 @@ export default function WebHeader(){
             <a href="#reportes" onClick={() => toggleDropdown('reports')}>Reportes</a>
             {activeDropdown === 'reports' && <ReportsMenu />}
           </li>
-          <li><a href="#asignaturas">Asignaturas</a></li>
+          <li><a href="#asignaturas" onClick={handleCoursesClick}>Asignaturas</a></li>
         </ul>
       </nav>
       </div>
