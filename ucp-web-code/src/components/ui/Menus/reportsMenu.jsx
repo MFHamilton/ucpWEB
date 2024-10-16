@@ -20,7 +20,7 @@ function ReportsMenu() {
           <span className="icon document"></span>
           <span>Volante de Calificaciones Finales</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/preselectionReport')}>
           <span className="icon document"></span>
           <span>Volante de Preselección</span>
         </li>
