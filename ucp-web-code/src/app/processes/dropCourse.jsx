@@ -20,7 +20,8 @@ export default function CoursePreSelection() {
   const [preSelectedCourses, setPreSelectedCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleCourseClick = () => {
+  const handleCourseClick = (courseId) => {
+    setSelectedCourse(coursesData[courseId]);
     setShowDropdown(!showDropdown);
   };
 
@@ -28,14 +29,11 @@ export default function CoursePreSelection() {
     const newCourse = { ...selectedCourse, selectedSchedule: schedule };
     setPreSelectedCourses([...preSelectedCourses, newCourse]);
     setShowDropdown(false);
-    setSearchTerm('');
     setSelectedCourse(null);
   };
 
   const handleSave = () => {
-    setSuccessMessage('Preselección guardada con éxito'); // Establecer mensaje de éxito
-    setErrorMessage(''); // Limpiar mensaje de error al guardar
-    setTimeout(() => setSuccessMessage(''), 3000);
+    console.log('Preselección guardada con éxito');
   };
 
   const handleMoveToPreSelected = (courseId) => {
@@ -43,9 +41,12 @@ export default function CoursePreSelection() {
     if (courseToMove) {
       const newCourse = { id: courseId, name: courseToMove.name, selectedSchedule: null };
       setPreSelectedCourses([...preSelectedCourses, newCourse]);
-      setSuccessMessage(`Curso ${courseToMove.name} movido a Retirar con éxito`); // Mensaje de éxito
-      setTimeout(() => setSuccessMessage(''), 3000);
     }
+  };
+
+  const handleRemoveFromPreSelected = (courseId) => {
+    const updatedCourses = preSelectedCourses.filter(course => course.id !== courseId);
+    setPreSelectedCourses(updatedCourses);
   };
 
   return (
@@ -60,13 +61,16 @@ export default function CoursePreSelection() {
               <div 
                 key={courseId} className="course-item" 
                 onClick={() => handleCourseClick(courseId)} 
-                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'left' }}>
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>{courseId} - {coursesData[courseId].name}</span>
                 <img 
                   src="src/assets/cuadrado-x.png" 
                   alt="Eliminar" 
-                  style={{ width: '20px', height: '20px' }} 
-                  onClick={() => handleMoveToPreSelected(courseId)} // Llama a la nueva función al hacer clic
+                  style={{ width: '20px', height: '20px', cursor: 'pointer' }} 
+                  onClick={(e) => {
+                    e.stopPropagation(); // Para evitar que se active handleCourseClick
+                    handleMoveToPreSelected(courseId);
+                  }} 
                 /> 
                 {showDropdown && selectedCourse?.id === courseId && (
                   <ul className="schedule-dropdown">
@@ -84,17 +88,16 @@ export default function CoursePreSelection() {
           <div className="pre-selection">
             <h3>Retirar</h3>
             {preSelectedCourses.map((course, index) => (
-              <div key={index} className="pre-selected-course">
+              <div key={index} className="pre-selected-course" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>{course.id} - {course.name}</span>
-                <span>{course.selectedSchedule.time} - {course.selectedSchedule.professor}</span>
+                <span>{course.selectedSchedule ? `${course.selectedSchedule.time} - ${course.selectedSchedule.professor}` : 'Sin horario seleccionado'}</span>
+                <button onClick={() => handleRemoveFromPreSelected(course.id)}>Retirar</button>
               </div>
             ))}
           </div>
         </div>
 
         <button className="save-button" onClick={handleSave}>Guardar</button>
-
-        
       </main>
     </div>
   );

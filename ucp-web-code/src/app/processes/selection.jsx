@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WebHeader from "../../components/ui/WebHeader/WebHeader";
 import Button from '../../components/ui/Button/button';
 import './processes.css';
@@ -22,6 +22,14 @@ export default function CoursePreSelection() {
   const [activeCourse, setActiveCourse] = useState(null); // Track active course for schedule change
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Load pre-selected courses from localStorage when the component mounts
+  useEffect(() => {
+    const savedPreSelectedCourses = JSON.parse(localStorage.getItem('preSelectedCourses'));
+    if (savedPreSelectedCourses) {
+      setPreSelectedCourses(savedPreSelectedCourses);
+    }
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -51,6 +59,8 @@ export default function CoursePreSelection() {
     setActiveCourse(null);
     setSearchTerm('');
     setSelectedCourse(null);
+    // Save updated pre-selected courses to localStorage
+    localStorage.setItem('preSelectedCourses', JSON.stringify([...preSelectedCourses, newCourse]));
   };
 
   const handleScheduleChange = (course, newSchedule) => {
@@ -59,6 +69,8 @@ export default function CoursePreSelection() {
     );
     setPreSelectedCourses(updatedCourses);
     setActiveCourse(null);
+    // Update localStorage
+    localStorage.setItem('preSelectedCourses', JSON.stringify(updatedCourses));
   };
 
   const handleSave = () => {
