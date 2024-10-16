@@ -64,8 +64,7 @@ export default function preselectionReport() {
               <th>Sec</th>
               <th>Asignatura</th>
               <th>CR</th>
-              <th>Calif Base</th>
-              <th>Calif</th>
+              <th>Tanda</th>
             </tr>
           </thead>
           <tbody>
