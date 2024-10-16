@@ -16,7 +16,7 @@ function ReportsMenu() {
           <span className="icon document"></span>
           <span>Volante de Calificaciones Medio Término</span>
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => handleNavigation('/finalsReport')}>
           <span className="icon document"></span>
           <span>Volante de Calificaciones Finales</span>
         </li>
