@@ -1,8 +1,8 @@
 .midterm-report {
   font-family: Poppins, sans-serif;
-  max-width: 1920px;
+  width: 1300px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0px;
 }
 
 main h3 {
@@ -23,6 +23,7 @@ main h3 {
   border: 1px solid #4B0082;
   border-radius: 4px;
   z-index: 1;
+  cursor: pointer;
   
 }
 
@@ -46,6 +47,7 @@ main h3 {
   padding: 15px;
   border-radius: 4px;
   margin-bottom: 20px;
+  gap: 20px;
 }
 
 .courses-table {
