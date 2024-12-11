@@ -12,28 +12,9 @@ export default function LogIn() {
   const [error, setError] = useState(null); // Estado para manejar errores
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('https://api.tudominio.com/login', { // Cambia esto a tu endpoint real
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ studentCode, password }), // Envía las credenciales
-      });
-
-      if (!response.ok) {
-        throw new Error('Credenciales incorrectas'); // Manejo de error si las credenciales no son válidas
-      }
-
-      const data = await response.json();
-      // Suponiendo que el token o datos del estudiante están devueltos, puedes almacenarlos
-      localStorage.setItem('token', data.token); // Ejemplo de almacenamiento de token
-      navigate('/dashboard'); // Redirige al dashboard si la autenticación es exitosa
-    } catch (err) {
-      setError(err.message); // Establece el error en el estado
-    }
+    navigate('/dashboard');
   };
 
   return (
