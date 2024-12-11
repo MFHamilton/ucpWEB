@@ -1,0 +1,67 @@
+.menu-container {
+    background-color: #5f1995;
+    color: white;
+    padding: 20px;
+    margin-top: 0.6rem;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1000;
+    width: 250px;
+  }
+
+  .menu-container-reports {
+    background-color: #5f1995;
+    color: white;
+    padding: 20px;
+    margin-top: 0.6rem;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1000;
+    width: 350px;
+  }
+  
+  .menu-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  
+  .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  .icon.document {
+    background-image: url('../../../assets/document.png');
+  }
+  
+  .icon.dollar {
+    background-image: url('../../../assets/dollar.png');
+  }
+  
+  .icon.minus {
+    background-image: url('../../../assets/retiro.png');
+  }
+
+  .menu-list.vertical {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-list.vertical .menu-item {
+    margin-bottom: 10px; 
+  }

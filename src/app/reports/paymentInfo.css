@@ -1,0 +1,103 @@
+.payment-info {
+    padding: 100px;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    width: 1150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+  }
+
+  
+  .student-info {
+    display: flex;
+    align-items: left;
+  }
+  
+  
+  .payment-details {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 1310px;
+    margin-top: 70px;
+    position:absolute;
+    left: 10px;
+  }
+  
+  .details-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .student-data {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    background-color: #f9fafb;
+    padding: 20px;
+    border-radius: 4px;
+  }
+  
+  .balance-summary {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .payments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .payments-grid > div {  /* Añadido para aplicar estilos a los elementos hijos */
+    background-color: #f9fafb;  /* Fondo blanco para los cuadros */
+    border: 1px solid #d1d5db;  /* Borde para los cuadros */
+    border-radius: 4px;  /* Esquinas redondeadas */
+    padding: 10px;  /* Espaciado interno */
+    padding-top: 0px;
+    width: 300px;
+  }
+  
+  Table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9fafb;
+    border-radius: 4px; 
+    padding: 100px; 
+  }
+  
+  Table th {
+    border-bottom: 1px solid #d1d5db;
+    color:#6b7280;
+    padding: 10px;
+    text-align: left;
+  }
+
+  Table tbody {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+
+  }
+  
+  .due-date {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  
+  

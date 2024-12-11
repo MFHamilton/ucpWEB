@@ -1,0 +1,88 @@
+.web-header {
+    height: 1080px;
+    width: 1370px;
+    position:absolute;
+    top:0;
+    left:0;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    font-family: Poppins, Arial;
+  }
+
+
+  .header {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-container-dashboard {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-dashboard {
+    width: 150px;
+    height: 100%;
+    margin-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 1rem ;
+    padding-bottom: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    color: #4a0e78;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.5rem;
+  }
+  
+  .menu-button svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .nav {
+    background-color: #4a0e78;
+    padding: 0.5rem 1rem;
+    
+  }
+  
+  .nav ul {
+    list-style-type: none;
+    padding: 0.2rem;
+    padding-left: 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .nav li {
+    margin-right: 3rem;
+  }
+  
+  .nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
+  
+  .nav a:hover {
+    background-color: #6a1b9a;
+  }
+  

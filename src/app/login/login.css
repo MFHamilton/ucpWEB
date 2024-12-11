@@ -1,0 +1,126 @@
+.image-container{
+  background-image: url('../../assets/background01.jpg'); /* Cambia esta ruta por la ruta de tu imagen */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Asegura que el contenedor cubra toda la altura de la pantalla */
+  width: 100vw;
+
+
+}
+
+body{margin: 0;}
+
+.login-container {
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+    height: 1080px;
+    justify-content: left;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    
+  }
+  
+  .login-form-container {
+    width: 80%;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    
+  }
+  
+  .login-form {
+    width: 70%;
+    max-width: 400px;
+    position: absolute;
+   
+    
+  }
+
+
+  
+  .logo-container {
+    justify-content: center;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    width: 30rem;
+  }
+  
+  .logo {
+    width: 300px;
+    height: 4rem;
+    margin-bottom: 5px;
+
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+    
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #3C096C;
+    text-align: left;
+  }
+  
+  .input[type=text] {
+    width: 500px;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    border: rgb(199, 199, 199);
+    border-radius: 0.25rem;
+    box-shadow: 0.2rem 0.2rem rgba(151, 150, 150, 0.493);
+    
+  }
+
+  .input[type=password] {
+    width: 500px;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    border: rgb(199, 199, 199);
+    border-radius: 0.25rem;
+    box-shadow: 0.2rem 0.2rem rgba(151, 150, 150, 0.493);
+    
+  }
+
+  
+  .forgot-password {
+    display: block;
+    text-align: left;
+    font-size: 1rem;
+    color: #3C096C;
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+  
+  .forgot-password:hover {
+    color: #6b46c1;
+  }
+  
+  .submit-button {
+    width: 520px;
+    height: 2.7rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: #3C096C;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+  }
+  
+  .submit-button:hover {
+    background-color: #6b46c1;
+  }
+
+  
+  
